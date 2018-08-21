@@ -13,17 +13,23 @@ const StyledCard = styled.div`
   &:hover {
     border-style: solid;
     box-shadow: 0px 10px 20px 0px rgba(90, 122, 190, 0.15);
+    cursor: pointer;
   }
 `;
 
-const Card = ({ children }) => (
-  <StyledCard>
+const Card = ({ children, className }) => (
+  <StyledCard className={className}>
     { children }
   </StyledCard>
 );
 
 Card.propTypes = {
   children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+};
+
+Card.defaultProps = {
+  className: '',
 };
 
 export { Card };
