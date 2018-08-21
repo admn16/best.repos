@@ -1,8 +1,12 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchRepositories } from 'actions/repositoryActions';
 
 class Tag extends PureComponent {
   static propTypes = {
+    fetchRepositories: PropTypes.func.isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
         tag: PropTypes.string.isRequired,
@@ -11,6 +15,9 @@ class Tag extends PureComponent {
   };
 
   componentDidMount() {
+    const { fetchRepositories } = this.props;
+
+    console.log(fetchRepositories());
   }
 
   render() {
@@ -23,4 +30,8 @@ class Tag extends PureComponent {
   }
 }
 
-export default Tag;
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchRepositories,
+}, dispatch);
+
+export default connect(null, mapDispatchToProps)(Tag);

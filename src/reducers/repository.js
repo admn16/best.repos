@@ -8,7 +8,7 @@ const defaultState = {
 
 const repository = (state = defaultState, action) => {
   switch (action.type) {
-    case [actionTypes.FETCH_REPOSITORIES]:
+    case actionTypes.FETCH_REPOSITORIES:
       return { ...state, loading: true };
 
     default:

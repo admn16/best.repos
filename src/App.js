@@ -4,19 +4,25 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 import rootReducer from 'reducers';
 import DefaultLayout from 'layouts/Default/Default';
 import Home from 'views/Home/Home';
 import Tag from 'views/Tag/Tag';
+import sagas from 'sagas';
 
+const sagaMiddleware = createSagaMiddleware();
+/* eslint-disable no-underscore-dangle */
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+/* eslint-enable */
 const store = createStore(
   rootReducer,
-  /* eslint-disable no-underscore-dangle */
-  process.env !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  /* eslint-enable */
+  composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
+
+sagaMiddleware.run(sagas);
 
 const App = () => (
   <Provider store={store}>
