@@ -1,7 +1,7 @@
 import * as actionTypes from 'actions/repositoryActionTypes';
 
 const defaultState = {
-  list: [],
+  repositories: [],
   selected: {},
   loading: false,
 };
@@ -9,7 +9,10 @@ const defaultState = {
 const repository = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_REPOSITORIES:
-      return { ...state, loading: true };
+      return { ...state, repositories: [], loading: true };
+
+    case actionTypes.FETCH_REPOSITORIES_SUCCESS:
+      return { ...state, repositories: action.payload };
 
     default:
       return state;
