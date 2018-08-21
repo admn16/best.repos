@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Card } from 'components/Card/Card';
 import { toTitle } from 'utils/string';
+import { toShortcutString } from 'utils/number';
 
 const StyledRepository = styled.div`
   display: flex;
@@ -52,7 +53,7 @@ const Repositories = ({ repositories }) => (
 
             <span>
               <Star className="fas fa-star" />
-              { starCount }
+              { toShortcutString(starCount) }
             </span>
           </CardHeader>
         </StyledCard>
