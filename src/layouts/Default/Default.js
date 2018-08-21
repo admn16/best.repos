@@ -1,14 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header } from './components';
+import styled from 'styled-components';
+import {
+  Header,
+  Sidebar,
+} from './components';
+
+const StyledDefault = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+`;
+
+const Section = styled.section`
+  flex: 80%;
+`;
 
 const Default = ({ children }) => (
-  <div>
+  <StyledDefault>
     <Header />
-    <section>
+    <Sidebar />
+    <Section>
       { children }
-    </section>
-  </div>
+    </Section>
+  </StyledDefault>
 );
 
 Default.propTypes = {
