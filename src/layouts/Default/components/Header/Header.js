@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledHeader = styled.header`
   background-image: linear-gradient(90deg, #DE6262, #FFB88C);
+  box-shadow: 0 1px #00000033;
   height: 40px;
   flex: 100%;
 `;

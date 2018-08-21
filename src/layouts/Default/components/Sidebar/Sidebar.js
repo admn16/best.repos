@@ -6,6 +6,7 @@ import { popular as popularTags } from 'constants/tags';
 const StyledSidebar = styled.nav`
   background: #EFEFEF;
   flex: 20%;
+  margin: 4px 0;
 `;
 
 const List = styled.ul`
