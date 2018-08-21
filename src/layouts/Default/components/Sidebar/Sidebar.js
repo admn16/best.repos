@@ -15,7 +15,6 @@ const List = styled.ul`
 `;
 
 const ListItem = styled.li`
-  padding: 10px 0;
   text-align: center;
   &:hover {
     cursor: pointer;
@@ -26,6 +25,7 @@ const ListItem = styled.li`
 const StyledLink = styled(Link)`
   color: #101010;
   display: inline-block;
+  padding: 10px 0;
   text-decoration: none;
   width: 100%;
   &:visited {
