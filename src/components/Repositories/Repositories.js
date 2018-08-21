@@ -31,7 +31,7 @@ const CardImage = styled.img`
 `;
 
 const Star = styled.i`
-  color: yellow;
+  color: #ffc107;
 `;
 
 const Repositories = ({ repositories }) => (
