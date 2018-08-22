@@ -50,7 +50,6 @@ const Star = styled.i`
   color: #ffc107;
 `;
 
-
 const Repositories = ({ repositories }) => (
   <StyledRepository>
     {repositories.map((repository) => {
