@@ -2,10 +2,40 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { fetchRepository } from 'actions/repositoryActions';
+import { RepositoryOverview } from 'components';
+import { capitalize } from 'utils/string';
+
+const StyledRepo = styled.article`
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+`;
+
+const Header = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 100%;
+  justify-content: space-between;
+`;
+
+const HeaderTitle = styled.h1`
+  color: #82362f;
+  font-size: 36px;
+  margin: 0;
+  padding: 0;
+`;
+
+const Star = styled.i`
+  color: #ffc107;
+`;
 
 class Repo extends PureComponent {
   static propTypes = {
+    data: PropTypes.shape({
+      full_name: PropTypes.string,
+    }),
     fetchRepository: PropTypes.func.isRequired,
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -16,6 +46,7 @@ class Repo extends PureComponent {
   };
 
   static defaultProps = {
+    data: {},
     match: {},
   };
 
@@ -26,16 +57,38 @@ class Repo extends PureComponent {
   }
 
   render() {
-    const { match } = this.props;
+    const { data, match: { params } } = this.props;
+    const title = capitalize(params.name);
+
+    console.log(data);
 
     return (
-      <h1>{match.params.name}</h1>
+      <StyledRepo>
+        <Header>
+          <HeaderTitle>{title}</HeaderTitle>
+
+          {
+            typeof data.stargazers_count !== 'undefined' && (
+            <span>
+              <Star className="fas fa-star" />&nbsp;
+              {data.stargazers_count}
+            </span>
+            )
+          }
+
+        </Header>
+        <RepositoryOverview data={data} />
+      </StyledRepo>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  data: state.repository.data,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchRepository,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Repo);
+export default connect(mapStateToProps, mapDispatchToProps)(Repo);
