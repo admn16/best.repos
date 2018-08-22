@@ -1,20 +1,41 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchRepository } from 'actions/repositoryActions';
 
-const Repository = ({ match }) => (
-  <h1>{match.params.reponame}</h1>
-);
-
-Repository.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      reponame: PropTypes.string,
+class Repository extends PureComponent {
+  static propTypes = {
+    fetchRepository: PropTypes.func.isRequired,
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+      }),
     }),
-  }),
-};
+  };
 
-Repository.defaultProps = {
-  match: {},
-};
+  static defaultProps = {
+    match: {},
+  };
 
-export default Repository;
+  componentDidMount() {
+    const { fetchRepository, match: { params } } = this.props;
+
+    fetchRepository(params);
+  }
+
+  render() {
+    const { match } = this.props;
+
+    return (
+      <h1>{match.params.name}</h1>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchRepository,
+}, dispatch);
+
+export default connect(null, mapDispatchToProps)(Repository);

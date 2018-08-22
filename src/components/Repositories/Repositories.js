@@ -26,6 +26,9 @@ const CardHeader = styled(Link)`
   &:visited {
     color: #444158;
   }
+  &:hover {
+    color: #d46362;
+  }
 `;
 
 const CardName = styled.h3`
@@ -58,7 +61,7 @@ const Repositories = ({ repositories }) => (
       } = repository;
       return (
         <StyledCard key={repository.id}>
-          <CardHeader to={`/repo/${repository.id}`}>
+          <CardHeader to={`/repo/${repository.full_name}`}>
             <CardImage src={owner.avatar_url} alt={owner.login} />
             <CardName>
               { toTitle(name) }
@@ -75,7 +78,11 @@ const Repositories = ({ repositories }) => (
             <p>
               { repository.description }
             </p>
-            <Tag>{ repository.language }</Tag>
+            {
+              repository.language && (
+                <Tag>{ repository.language }</Tag>
+              )
+            }
           </div>
         </StyledCard>
       );
