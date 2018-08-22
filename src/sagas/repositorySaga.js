@@ -3,6 +3,7 @@ import {
   FETCH_REPOSITORIES,
   FETCH_REPOSITORIES_SUCCESS,
   FETCH_REPOSITORY,
+  FETCH_REPOSITORY_SUCCESS,
 } from 'actions/repositoryActionTypes';
 import { fetchRepositoriesByTag, fetchRepositoryByAuthorName } from 'services/githubApi';
 
@@ -21,7 +22,10 @@ function* fetchRepositories(action) {
 function* fetchRepository(action) {
   try {
     const repo = yield call(fetchRepositoryByAuthorName, action.payload);
-    console.log(repo);
+    yield put({
+      type: FETCH_REPOSITORY_SUCCESS,
+      payload: repo,
+    });
   } catch (e) {
     console.log(e);
   }
