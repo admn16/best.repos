@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchRepository } from 'actions/repositoryActions';
 
-class Repository extends PureComponent {
+class Repo extends PureComponent {
   static propTypes = {
     fetchRepository: PropTypes.func.isRequired,
     match: PropTypes.shape({
@@ -38,4 +38,4 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   fetchRepository,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Repository);
+export default connect(null, mapDispatchToProps)(Repo);

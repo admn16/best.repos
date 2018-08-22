@@ -10,7 +10,7 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from 'reducers';
 import DefaultLayout from 'layouts/Default/Default';
 import Home from 'views/Home/Home';
-import Repository from 'views/Repository/Repository';
+import Repo from 'views/Repo/Repo';
 import Tag from 'views/Tag/Tag';
 import sagas from 'sagas';
 
@@ -32,7 +32,7 @@ const App = () => (
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/tag/:tag" component={Tag} />
-          <Route path="/repo/:author/:name" component={Repository} />
+          <Route path="/repo/:author/:name" component={Repo} />
         </Switch>
       </DefaultLayout>
     </Router>
