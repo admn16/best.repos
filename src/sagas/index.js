@@ -3,6 +3,6 @@ import repositorySaga from './repositorySaga';
 
 export default function* rootSagas() {
   yield all([
-    repositorySaga(),
+    ...repositorySaga,
   ]);
 }

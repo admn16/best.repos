@@ -9,3 +9,7 @@ const githubAxios = axios.create({
 export const fetchRepositoriesByTag = (tag = '') => githubAxios
   .get(`/search/repositories?q=topic:${tag}&sort=stars`)
   .then(({ data }) => data);
+
+export const fetchRepositoryByAuthorName = ({ author, name }) => githubAxios
+  .get(`repos/${author}/${name}`)
+  .then(({ data }) => data);

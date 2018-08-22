@@ -73,7 +73,7 @@ class Tag extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  repositories: state.repository.repositories,
+  repositories: state.repository.list,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

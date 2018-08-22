@@ -1,7 +1,10 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-// import repoActions from 'actions/repositoryActions';
-import { FETCH_REPOSITORIES, FETCH_REPOSITORIES_SUCCESS } from 'actions/repositoryActionTypes';
-import { fetchRepositoriesByTag } from 'services/githubApi';
+import {
+  FETCH_REPOSITORIES,
+  FETCH_REPOSITORIES_SUCCESS,
+  FETCH_REPOSITORY,
+} from 'actions/repositoryActionTypes';
+import { fetchRepositoriesByTag, fetchRepositoryByAuthorName } from 'services/githubApi';
 
 function* fetchRepositories(action) {
   try {
@@ -15,8 +18,16 @@ function* fetchRepositories(action) {
   }
 }
 
-function* watchFetchRepositories() {
-  yield takeLatest(FETCH_REPOSITORIES, fetchRepositories);
+function* fetchRepository(action) {
+  try {
+    const repo = yield call(fetchRepositoryByAuthorName, action.payload);
+    console.log(repo);
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-export default watchFetchRepositories;
+export default [
+  takeLatest(FETCH_REPOSITORIES, fetchRepositories),
+  takeLatest(FETCH_REPOSITORY, fetchRepository),
+];
