@@ -7,13 +7,16 @@ import {
 } from './components';
 
 const StyledDefault = styled.div`
+  align-content: baseline;
   display: flex;
   flex-wrap: wrap;
+  height: 100%;
+  overflow: auto;
   width: 100%;
 `;
 
 const Section = styled.section`
-  flex: 80%;
+  flex: 85%;
 `;
 
 const Default = ({ children }) => (

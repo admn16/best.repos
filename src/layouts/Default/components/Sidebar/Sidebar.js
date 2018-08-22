@@ -4,9 +4,10 @@ import styled from 'styled-components';
 import { popular as popularTags } from 'constants/tags';
 
 const StyledSidebar = styled.nav`
-  background: #EFEFEF;
-  flex: 20%;
-  margin: 4px 0;
+  background: #fff;
+  flex: 15%;
+  height: 100%;
+  box-shadow: 0 0 200px -20px rgba(57,55,73,.4);
 `;
 
 const List = styled.ul`
@@ -15,22 +16,33 @@ const List = styled.ul`
   width: 100%;
 `;
 
+const ListText = styled.span`
+  display: inline-block;
+  color: #74708d;
+  padding: 10px;
+`;
+
 const ListItem = styled.li`
-  text-align: center;
-  &:hover {
-    cursor: pointer;
-    background: #C4C4C4;
-  }
+  font-size: 14px;
+  text-align: left;
+`;
+
+const NestedList = styled(List)`
+  padding-left: 10px;
 `;
 
 const StyledLink = styled(Link)`
-  color: #101010;
+  color: #74708d;
   display: inline-block;
-  padding: 10px 0;
+  padding: 10px;
   text-decoration: none;
   width: 100%;
   &:visited {
-    color: #101010;
+    color: #74708d;
+  }
+  &:hover {
+    cursor: pointer;
+    color: #e6756c;
   }
 `;
 
@@ -47,17 +59,24 @@ const Sidebar = () => (
     <List>
       <ListItem>
         <StyledLink to="/">
-          Home
+          HOME
         </StyledLink>
       </ListItem>
 
-      {popularTagsObj.map(tag => (
-        <ListItem key={tag.value}>
-          <StyledLink to={`/tag/${tag.value}`}>
-            { tag.text }
-          </StyledLink>
-        </ListItem>
-      ))}
+      <ListItem>
+        <ListText>
+          POPULAR TAGS
+        </ListText>
+        <NestedList>
+          {popularTagsObj.map(tag => (
+            <ListItem key={tag.value}>
+              <StyledLink to={`/tag/${tag.value}`}>
+                { tag.text }
+              </StyledLink>
+            </ListItem>
+          ))}
+        </NestedList>
+      </ListItem>
     </List>
   </StyledSidebar>
 );

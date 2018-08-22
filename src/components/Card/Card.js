@@ -13,7 +13,6 @@ const StyledCard = styled.div`
   &:hover {
     border-style: solid;
     box-shadow: 0px 10px 20px 0px rgba(90, 122, 190, 0.15);
-    cursor: pointer;
   }
 `;
 
