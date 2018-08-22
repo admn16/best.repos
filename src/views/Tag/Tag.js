@@ -14,15 +14,15 @@ const StyledTag = styled.div`
 const TagHeader = styled.div`
   border-bottom: 1px solid #887b7b;
   box-shadow: 0 1px #00000033;
+`;
 
-  & i {
-    color: #df6564;
-  }
+const TagHeaderText = styled.h1`
+  display: inline-block;
+  margin-left: 5px;
+`;
 
-  & h1 {
-    display: inline-block;
-    margin-left: 5px;
-  }
+const TagHeaderIcon = styled.i`
+  color: #df6564;
 `;
 
 class Tag extends PureComponent {
@@ -62,8 +62,8 @@ class Tag extends PureComponent {
     return (
       <StyledTag>
         <TagHeader>
-          <i className="fas fa-tags" />
-          <h1>{utils.capitalize(params.tag)}</h1>
+          <TagHeaderIcon className="fas fa-tags" />
+          <TagHeaderText>{utils.capitalize(params.tag)}</TagHeaderText>
         </TagHeader>
 
         <Repositories repositories={repositories} />
