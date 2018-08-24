@@ -13,3 +13,13 @@ export const toShortcutString = (num) => {
 
   return strNum;
 };
+
+export const commaSeparated = (num) => {
+  const strNum = `${num}`;
+
+  if (strNum.length > 3) {
+    return strNum.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  return strNum;
+};
