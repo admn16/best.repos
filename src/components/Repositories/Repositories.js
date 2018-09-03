@@ -14,6 +14,7 @@ const StyledRepository = styled.div`
 
 const StyledCard = styled(Card)`
   flex: 45%;
+  margin: 5px;
 `;
 
 const CardHeader = styled(Link)`

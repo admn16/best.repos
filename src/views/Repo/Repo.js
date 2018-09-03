@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { fetchRepository } from 'actions/repositoryActions';
 import { RepositoryOverview } from 'components';
 import { capitalize } from 'utils/string';
+import { commaSeparated } from 'utils/number';
 
 const StyledRepo = styled.article`
   display: flex;
@@ -71,7 +72,7 @@ class Repo extends PureComponent {
             typeof data.stargazers_count !== 'undefined' && (
             <span>
               <Star className="fas fa-star" />&nbsp;
-              {data.stargazers_count}
+              {commaSeparated(data.stargazers_count)}
             </span>
             )
           }

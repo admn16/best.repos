@@ -5,9 +5,10 @@ import { popular as popularTags } from 'constants/tags';
 
 const StyledSidebar = styled.nav`
   background: #fff;
-  flex: 15%;
-  height: 100%;
   box-shadow: 0 0 200px -20px rgba(57,55,73,.4);
+  flex: 15%;
+  height: 100%v;
+  min-height: 100%;
 `;
 
 const List = styled.ul`
