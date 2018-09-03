@@ -1,2 +1,2 @@
 /* eslint-disable import/prefer-default-export */
-export const popular = ['react', 'vue', 'testing', 'redux', 'charting'];
+export const popular = ['react', 'vue', 'testing', 'redux', 'chart', 'visualization'];

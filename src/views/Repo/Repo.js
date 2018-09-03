@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { fetchRepository } from 'actions/repositoryActions';
-import { RepositoryOverview } from 'components';
+import { RepoDetails } from 'components';
 import { capitalize } from 'utils/string';
 import { commaSeparated } from 'utils/number';
 
@@ -61,8 +61,6 @@ class Repo extends PureComponent {
     const { data, match: { params } } = this.props;
     const title = capitalize(params.name);
 
-    console.log(data);
-
     return (
       <StyledRepo>
         <Header>
@@ -78,7 +76,8 @@ class Repo extends PureComponent {
           }
 
         </Header>
-        <RepositoryOverview data={data} />
+
+        <RepoDetails data={data} />
       </StyledRepo>
     );
   }
